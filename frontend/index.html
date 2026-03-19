@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>TalentLens</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"/>
+  <link href="css/base.css"       rel="stylesheet"/>
+  <link href="css/components.css" rel="stylesheet"/>
+  <link href="css/page.css"      rel="stylesheet"/>
+</head>
+<body>
+
+<!-- ══════════════════════════════════════════
+     LOADER
+═══════════════════════════════════════════ -->
+<div id="loader">
+  <div class="loader-ring"></div>
+  <div id="loader-dots"    class="loader-dots"></div>
+  <div id="loader-txt"     class="loader-txt">Starting analysis</div>
+  <div id="loader-sub"     class="loader-sub">Please wait</div>
+  <div id="loader-elapsed" class="loader-elapsed">0s elapsed</div>
+  <button class="loader-cancel" onclick="cancelAnalysis()">Cancel</button>
+</div>
+
+<!-- ══════════════════════════════════════════
+     NAVBAR
+═══════════════════════════════════════════ -->
+<nav class="navbar">
+  <a class="navbar-brand">
+    <svg class="brand-icon" viewBox="0 0 36 36" fill="none">
+      <circle cx="18" cy="18" r="16" stroke="#0d9488" stroke-width="2.5"/>
+      <circle cx="18" cy="18" r="9"  stroke="#0d9488" stroke-width="2" stroke-dasharray="3 2"/>
+      <circle cx="18" cy="18" r="3"  fill="#0d9488"/>
+      <line x1="18" y1="2"  x2="18" y2="8"  stroke="#0d9488" stroke-width="2" stroke-linecap="round"/>
+      <line x1="18" y1="28" x2="18" y2="34" stroke="#0d9488" stroke-width="2" stroke-linecap="round"/>
+      <line x1="2"  y1="18" x2="8"  y2="18" stroke="#0d9488" stroke-width="2" stroke-linecap="round"/>
+      <line x1="28" y1="18" x2="34" y2="18" stroke="#0d9488" stroke-width="2" stroke-linecap="round"/>
+    </svg>
+    <div class="brand-text">
+      <div class="brand-name">Talent<span>Lens</span></div>
+      <div class="brand-tagline">Hire sharper. Decide faster.</div>
+    </div>
+  </a>
+  <div class="nav-links">
+    <a class="nav-link" data-page="screen" onclick="navigate('screen')">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+      </svg>
+      Screen
+    </a>
+    <a class="nav-link" data-page="results" onclick="navigate('results')">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <line x1="8" y1="6"  x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/>
+        <line x1="8" y1="18" x2="21" y2="18"/>
+        <line x1="3" y1="6"  x2="3.01" y2="6"/>
+        <line x1="3" y1="12" x2="3.01" y2="12"/>
+        <line x1="3" y1="18" x2="3.01" y2="18"/>
+      </svg>
+      Results
+    </a>
+  </div>
+</nav>
+
+<div class="page-wrap">
+
+  <!-- ══════════════════════════════════════
+       SCREEN PAGE
+  ═══════════════════════════════════════ -->
+  <div id="page-screen" class="page">
+    <div class="row g-4">
+
+      <!-- Left: JD -->
+      <div class="col-lg-7">
+        <div class="card">
+          <div class="card-body">
+            <div class="card-title">Job Description</div>
+
+            <div class="toggle-group">
+              <button class="toggle-btn active" id="btn-write"  onclick="setMode('write')">Fill in details</button>
+              <button class="toggle-btn"         id="btn-upload" onclick="setMode('upload')">Upload JD</button>
+            </div>
+
+            <!-- Write mode -->
+            <div id="pane-write">
+              <div class="row g-3">
+                <div class="col-sm-7">
+                  <div class="form-group">
+                    <label>Job Title <span style="color:#dc2626">*</span></label>
+                    <input type="text" id="jd-title" placeholder="e.g. Senior Data Engineer"/>
+                  </div>
+                </div>
+                <div class="col-sm-5">
+                  <div class="form-group">
+                    <label>Company</label>
+                    <input type="text" id="jd-company" placeholder="e.g. Systems Limited"/>
+                  </div>
+                </div>
+                <div class="col-12">
+                  <div class="form-group">
+                    <label>Full Description <span style="color:#dc2626">*</span></label>
+                    <textarea id="jd-desc" rows="6" placeholder="Paste the complete job description here..."></textarea>
+                  </div>
+                </div>
+                <div class="col-sm-6">
+                  <div class="form-group">
+                    <label>Required Skills <span style="font-weight:400;text-transform:none;letter-spacing:0;color:var(--text-muted)">(comma separated)</span></label>
+                    <input type="text" id="req-skills" placeholder="Python, FastAPI, SQL, Docker"/>
+                  </div>
+                </div>
+                <div class="col-sm-4">
+                  <div class="form-group">
+                    <label>Preferred Skills</label>
+                    <input type="text" id="pref-skills" placeholder="Kubernetes, Spark"/>
+                  </div>
+                </div>
+                <div class="col-sm-2">
+                  <div class="form-group">
+                    <label>Min. Exp.</label>
+                    <input type="number" id="exp-yrs" placeholder="2"/>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Upload mode -->
+            <div id="pane-upload" style="display:none">
+              <p style="font-size:13px;color:var(--text-muted);margin-bottom:16px">
+                Already have the JD saved as a file? Drop it here — we'll extract everything automatically.
+              </p>
+              <div class="drop-zone" id="jd-drop"
+                   onclick="document.getElementById('jd-file-input').click()"
+                   ondragover="jdDragOver(event)" ondragleave="jdDragLeave()" ondrop="jdDropped(event)">
+                <div class="drop-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/>
+                    <polyline points="17,8 12,3 7,8"/>
+                    <line x1="12" y1="3" x2="12" y2="15"/>
+                  </svg>
+                </div>
+                <div class="drop-title">Drop your JD file here</div>
+                <div class="drop-hint">Supports <strong>PDF</strong> and <strong>TXT</strong> — or click to browse</div>
+                <input type="file" id="jd-file-input" accept=".pdf,.txt" style="display:none"
+                       onchange="jdBrowse(this.files)"/>
+              </div>
+              <div id="jd-chip"></div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: Resumes + Run -->
+      <div class="col-lg-5">
+        <div class="card mb-4">
+          <div class="card-body">
+            <div class="card-title">Candidate Resumes</div>
+            <div class="drop-zone" id="res-drop"
+                 onclick="document.getElementById('res-file-input').click()"
+                 ondragover="resDragOver(event)" ondragleave="resDragLeave()" ondrop="resDropped(event)">
+              <div class="drop-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/>
+                  <polyline points="14,2 14,8 20,8"/>
+                  <line x1="12" y1="18" x2="12" y2="12"/>
+                  <line x1="9"  y1="15" x2="12" y2="12"/>
+                  <line x1="15" y1="15" x2="12" y2="12"/>
+                </svg>
+              </div>
+              <div class="drop-title">Drop resume PDFs here</div>
+              <div class="drop-hint">Multiple files — or <strong>click to browse</strong></div>
+              <input type="file" id="res-file-input" multiple accept=".pdf" style="display:none"
+                     onchange="resBrowse(this.files)"/>
+            </div>
+            <div id="res-file-list" class="file-list"></div>
+          </div>
+        </div>
+
+        <div id="alert-err" class="alert-err"></div>
+        <button class="btn-run" onclick="runFilter()">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <polygon points="5,3 19,12 5,21"/>
+          </svg>
+          Run Analysis
+        </button>
+      </div>
+
+    </div>
+  </div><!-- /page-screen -->
+
+  <!-- ══════════════════════════════════════
+       RESULTS PAGE
+  ═══════════════════════════════════════ -->
+  <div id="page-results" class="page">
+
+    <div id="results-empty" class="empty-state">
+      <div class="empty-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/>
+          <circle cx="9" cy="7" r="4"/>
+          <path d="M23 21v-2a4 4 0 00-3-3.87"/>
+          <path d="M16 3.13a4 4 0 010 7.75"/>
+        </svg>
+      </div>
+      <p>No results yet — run a screen first.</p>
+    </div>
+
+    <div id="results-content" style="display:none">
+
+      <!-- Stats — 4 cards -->
+      <div class="stats-row">
+        <div class="stat-card">
+          <div class="stat-num" id="stat-screened">—</div>
+          <div class="stat-lbl">Screened</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num" id="stat-ranked">—</div>
+          <div class="stat-lbl">Ranked</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num" style="color:var(--green)" id="stat-strong">—</div>
+          <div class="stat-lbl">Strong Matches</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num" style="color:var(--amber)" id="stat-possible">—</div>
+          <div class="stat-lbl">Moderate Matches</div>
+        </div>
+      </div>
+
+      <!-- Filter + Sort bar -->
+      <div class="controls-bar">
+        <div class="filter-group">
+          <span class="controls-label">Filter:</span>
+          <button class="filter-btn active" id="filter-all"      onclick="setFilter('all')">All</button>
+          <button class="filter-btn"        id="filter-strong"   onclick="setFilter('strong')">Strong Match</button>
+          <button class="filter-btn"        id="filter-possible" onclick="setFilter('possible')">Moderate Match</button>
+          <button class="filter-btn"        id="filter-weak"     onclick="setFilter('weak')">Weak Match</button>
+        </div>
+        <div class="sort-group">
+          <span class="controls-label">Sort:</span>
+          <button class="sort-btn active" id="sort-score" onclick="setSort('score')">By Score</button>
+          <button class="sort-btn"        id="sort-name"  onclick="setSort('name')">A–Z</button>
+        </div>
+      </div>
+
+      <div id="candidate-list"></div>
+
+    </div>
+  </div><!-- /page-results -->
+
+</div><!-- /page-wrap -->
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="js/navigation.js"></script>
+<script src="js/upload.js"></script>
+<script src="js/api.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>

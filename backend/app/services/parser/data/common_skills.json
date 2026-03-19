@@ -1,0 +1,159 @@
+{
+  "version": "2026-03-categorized-v1",
+  "description": "Categorized skill taxonomy (~500 entries) — technical + business + soft + domain-specific",
+
+  "skills": {
+
+    "programming_languages": [
+      "python", "java", "javascript", "typescript", "c", "c++", "c#",
+      "go", "rust", "ruby", "php", "swift", "kotlin", "scala", "r",
+      "matlab", "bash", "perl", "dart", "sql"
+    ],
+
+    "web_frameworks": [
+      "django", "flask", "fastapi", "react", "angular", "vue.js",
+      "next.js", "node.js", "express.js", "spring boot", "laravel",
+      "rails", "ruby on rails", "asp.net", ".net"
+    ],
+
+    "ml_ai": [
+      "machine learning", "deep learning", "natural language processing",
+      "computer vision", "tensorflow", "pytorch", "keras", "scikit-learn",
+      "bert", "gpt", "transformers", "langchain", "opencv", "xgboost",
+      "lightgbm", "pandas", "numpy", "matplotlib", "seaborn", "plotly",
+      "llm", "prompt engineering", "llamaindex", "hugging face",
+      "vector databases", "pinecone", "rag", "fine tuning", "openai",
+      "reinforcement learning", "feature engineering", "model deployment"
+    ],
+
+    "databases": [
+      "mysql", "postgresql", "sqlite", "mongodb", "redis", "cassandra",
+      "elasticsearch", "firebase", "dynamodb", "oracle db", "oracle",
+      "sqlserver", "dbt", "etl"
+    ],
+
+    "cloud_devops": [
+      "amazon web services", "aws", "google cloud platform", "gcp", "azure",
+      "docker", "kubernetes", "terraform", "ansible", "jenkins",
+      "github actions", "ci/cd", "continuous integration", "continuous deployment",
+      "linux", "nginx", "airflow", "apache spark", "kafka",
+      "heroku", "gitlab", "bitbucket", "prometheus", "grafana",
+      "helm", "serverless", "google cloud", "chef", "puppet"
+    ],
+
+    "data_engineering": [
+      "etl", "dbt", "apache spark", "kafka", "airflow",
+      "data pipelines", "data warehousing", "data modeling",
+      "big data", "hadoop", "snowflake", "redshift", "databricks"
+    ],
+
+    "tools_and_platforms": [
+      "git", "jira", "figma", "tableau", "power bi", "excel",
+      "google analytics", "hubspot", "hubspot crm", "salesforce",
+      "sap", "workday", "quickbooks", "graphql", "grpc", "rest api",
+      "microservices", "system design", "agile", "scrum", "waterfall",
+      "lean", "six sigma", "tdd", "test driven development", "oop",
+      "object oriented", "invision", "sketch", "photoshop",
+      "illustrator", "adobe creative suite", "autocad", "solidworks",
+      "unity", "unreal engine"
+    ],
+
+    "soft_skills": [
+      "communication", "leadership", "teamwork", "problem solving",
+      "critical thinking", "collaboration", "active listening",
+      "empathy", "analytical thinking", "work ethic", "accountability",
+      "adaptability", "creativity", "initiative", "decision making",
+      "attention to detail", "time management", "multitasking",
+      "stress management", "emotional intelligence", "conflict resolution",
+      "negotiation", "presentation", "public speaking", "mentoring",
+      "stakeholder management", "strategic planning"
+    ],
+
+    "project_management": [
+      "project management", "program management", "product management",
+      "agile", "scrum", "waterfall", "lean", "six sigma", "kanban",
+      "risk management", "resource allocation", "budget management",
+      "change management", "operations management", "process improvement",
+      "vendor management", "contract management", "procurement",
+      "supply chain", "inventory management", "forecasting"
+    ],
+
+    "business_finance": [
+      "business analysis", "business development", "business intelligence",
+      "financial analysis", "financial modeling", "financial reporting",
+      "accounts payable", "accounts receivable", "cash flow management",
+      "budgeting", "accounting", "auditing", "tax", "valuation",
+      "mergers and acquisitions", "investment banking", "corporate finance",
+      "portfolio management", "due diligence", "ifrs", "gaap",
+      "sales", "b2b sales", "b2c sales", "lead generation",
+      "key account management", "account management", "sales forecasting",
+      "sales operations", "territory management", "consultative selling",
+      "solution selling", "closing", "crm", "customer relationship management"
+    ],
+
+    "marketing": [
+      "digital marketing", "content marketing", "social media marketing",
+      "email marketing", "seo", "sem", "google ads", "facebook ads",
+      "content creation", "copywriting", "affiliate marketing",
+      "influencer marketing", "campaign management", "a/b testing",
+      "marketing automation", "brand management", "branding",
+      "product marketing", "public relations", "advertising",
+      "market research"
+    ],
+
+    "design": [
+      "ui design", "ux design", "graphic design", "web design",
+      "product design", "prototyping", "figma", "sketch", "invision",
+      "adobe creative suite", "photoshop", "illustrator",
+      "typography", "color theory"
+    ],
+
+    "hr_talent": [
+      "human resources", "recruiting", "talent acquisition",
+      "onboarding", "employee relations", "performance management",
+      "compensation", "benefits administration", "hr policies",
+      "hr information systems", "learning and development",
+      "training", "succession planning", "labor law", "employment law",
+      "compliance", "payroll", "workforce planning"
+    ],
+
+    "legal": [
+      "legal research", "legal writing", "contract law", "corporate law",
+      "litigation", "intellectual property", "patent law",
+      "regulatory affairs", "compliance", "due diligence",
+      "employment law", "labor law"
+    ],
+
+    "healthcare_medical": [
+      "patient care", "nursing", "diagnosis", "treatment planning",
+      "surgery", "pharmacology", "physiology", "medical terminology",
+      "clinical research", "hipaa", "ehr", "emr", "epic", "cerner",
+      "iv administration", "wound care", "vital signs", "triage",
+      "electronic health records", "infection control",
+      "physical therapy", "mental health", "public health",
+      "medical billing", "health informatics"
+    ],
+
+    "engineering": [
+      "mechanical engineering", "electrical engineering",
+      "civil engineering", "chemical engineering",
+      "industrial engineering", "autocad", "solidworks",
+      "ansys", "catia", "cad", "hvac", "simulation",
+      "finite element analysis", "plc programming", "matlab"
+    ],
+
+    "education": [
+      "teaching", "curriculum development", "lesson planning",
+      "classroom management", "student assessment", "instructional design",
+      "elearning", "special education", "mentoring", "coaching",
+      "training", "learning and development"
+    ],
+
+    "hospitality": [
+      "hotel management", "customer service", "food safety",
+      "event planning", "catering", "bartending", "housekeeping",
+      "operations management", "inventory management"
+    ]
+
+  }
+}

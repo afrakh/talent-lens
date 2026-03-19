@@ -1,0 +1,11 @@
+fastapi
+uvicorn
+python-dotenv
+pdfplumber
+pymupdf
+pytesseract
+pillow
+spacy
+torch
+transformers
+faiss-cpu
