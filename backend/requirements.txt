@@ -1,11 +1,12 @@
 fastapi
 uvicorn
-python-dotenv
 pdfplumber
 pymupdf
 pytesseract
 pillow
 spacy
-torch
-transformers
-faiss-cpu
+python-dotenv
+groq
+sentence-transformers
+scikit-learn
+numpy
