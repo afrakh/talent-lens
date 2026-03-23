@@ -185,3 +185,7 @@ GROQ_API_KEY=your_groq_api_key_here
 - [spaCy](https://spacy.io/)
 - [pdfplumber](https://github.com/jsvine/pdfplumber)
 - [Bootstrap 5](https://getbootstrap.com/)
+
+## Demo Video
+
+[Watch Demo](https://www.loom.com/share/ce5242a0aa314cea836ceb7aa72792e9)
